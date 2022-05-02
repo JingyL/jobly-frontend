@@ -1,0 +1,5 @@
+li {
+    display: inline;
+    list-style-type: none;
+    margin-left: 10px;
+}
