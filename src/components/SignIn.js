@@ -22,11 +22,12 @@ function SignIn({login}) {
   async function handleSubmit(e) {
     e.preventDefault();
     // get login token, if errors, give err msg, else link to /companies
-      let response = login(formData);
-      if (response.success){
+      let response = await login(formData);
+      console.log("login", response)
+      if (response["success"]){
         history.push("/companies");
       }else{
-        setFormErrors(response.errors);
+        setFormErrors(response.error);
       }
 
   }
@@ -66,14 +67,11 @@ function SignIn({login}) {
                 : null}
 
               <button
-                className="btn btn-primary btn-block mt-4"
+                className="btn btn-style btn-block mt-4"
                 onClick={handleSubmit}
               >
                 Sign In
               </button>
-              <Link to="/signup" className="btn btn-primary btn-block mt-4">
-                Sign Up
-              </Link>
 
             </form>
           </div>

@@ -1,42 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./Companies.css";
+import React, {useEffect, useState } from "react";
+import "./Jobs.css";
 import JoblyApi from "../api/Api";
-
+import UserContext from "../hooks/UserContext";
 import SearchForm from "../common/SearchForm";
 import JobCard from "./JobCard";
 
 
-function Jobs() {
+function Jobs({applyToJob}) {
   const [jobs, setJobs] = useState(null);
+
   useEffect(() => {
     async function getJobs() {
       let jobs = await JoblyApi.getJobs();
-      console.log(jobs)
       setJobs(jobs);
     }
     getJobs();
   }, []);
 
-  if (!jobs) {
-    return <p>Loading &hellip;</p>;
+  async function search(jobName) {
+    let allJobs = await JoblyApi.getJobs(jobName);
+    setJobs(allJobs);
   }
+
+  if (!jobs) {
+    return <p className="loading">Loading &hellip;</p>;
+  }
+
+
 
 
   return (
     <div className="jobs">
-      <div className="container form-margin">
-        <SearchForm></SearchForm>
+      <div className="container bg form-margin">
+        <SearchForm searchFor={search}></SearchForm>
       </div>
 
       {jobs.map(job => (
         <JobCard
-          key={job.id}
+          id={job.id}
           handle={job.companyHandle}
           title={job.title}
           salary={job.salary}
           equity={job.equity}
           name={job.companyName}
+          applyToJob={applyToJob}
         />
       ))}
     </div>

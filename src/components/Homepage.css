@@ -1,7 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oleo+Script+Swash+Caps:wght@400;700&display=swap');
+
 .Homepage {
     /* put around the vertical center of page */
-    height: calc(100vh - 150px);
+    height: calc(100vh);
     display: flex;
     align-items: center;
+    background-color:#e6ccb2;
+    margin-top: -30px;
   }
+  
+  .projectName{
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-weight: 400;
+    font-size: 100px;
+    color:black;
+  }
+  .lead{
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-weight: 400;
+    font-size: 40px;
+  }
+
+  .welcome-words{
+    font-family: 'Libre Baskerville', serif;
+    font-size: 30px;
+    animation: color-change 5s infinite;
+  }
+  @keyframes color-change {
+    0% { color: #c7b7a9; }
+    50% { color: #9C6644; }
+    100% { color: #656D4A; }
+  }
+
+  .btn-style{
+    background-color: #7F5539;
+    color: #c7b7a9;
+    margin-left: 20px;
+    font-size: 20px;
+  }
+
   

@@ -3,7 +3,7 @@ import "./SignUp.css";
 import JoblyApi from "../api/Api";
 import { useHistory} from "react-router-dom";
 
-function SignUp() {
+function SignUp({signup}) {
   const [formData, setFormData] = useState({
     username: "",
     firstName: "",
@@ -11,6 +11,7 @@ function SignUp() {
     password: "",
     email:""
   });
+  const [formErrors, setFormErrors] = useState("");
   const history = useHistory();
 
   function handleChange(e) {
@@ -21,10 +22,12 @@ function SignUp() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    let userToken = await JoblyApi.signup(formData);
-    console.log(userToken);
-    if (userToken){
+    let response = await signup(formData);
+    console.log(response);
+    if (response["success"]){
       history.push("companies");
+    }else{
+      setFormErrors(response.error);
     }
   }
 
@@ -83,9 +86,12 @@ function SignUp() {
                 />
               </div>
 
-
+              {formErrors != ""
+                ? <p type="danger" messages={formErrors}>{formErrors}</p>
+                : null}
+                
               <button
-                className="btn btn-primary btn-block mt-4"
+                className="btn btn-style btn-block mt-4"
                 onClick={handleSubmit}
               >
                 Sign up

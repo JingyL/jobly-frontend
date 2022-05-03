@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Libre+Baskerville&family=Oleo+Script+Swash+Caps:wght@400;700&display=swap');
+
 .App {
   text-align: center;
+  background-color:#e6ccb2;
+  height: 100%;
 }
 
 .App-logo {
@@ -36,3 +40,10 @@
     transform: rotate(360deg);
   }
 }
+
+.loading{
+  color:#414833;
+  font-size: 40px;
+  font-family: 'Bangers', cursive;
+}
+

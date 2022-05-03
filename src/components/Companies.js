@@ -1,31 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./Companies.css";
 import JoblyApi from "../api/Api";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "../common/SearchForm";
-
 
 function Companies() {
   const [companies, setCompanies] = useState(null);
   useEffect(() => {
     async function getCompanies() {
       let companies = await JoblyApi.getCompanies();
-      console.log(companies)
       setCompanies(companies);
     }
     getCompanies();
   }, []);
 
-  if (!companies) {
-    return <p>Loading &hellip;</p>;
+  async function search(name) {
+    let companies = await JoblyApi.getCompanies(name);
+    setCompanies(companies);
   }
 
+  if (!companies) {
+    return <p className="loading">Loading &hellip;</p>;
+  }
+
+
+
+  
 
   return (
     <div className="companies">
       <div className="container form-margin">
-        <SearchForm></SearchForm>
+        <SearchForm searchFor={search}></SearchForm>
       </div>
 
 

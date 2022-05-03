@@ -19,7 +19,7 @@ function CompanyDetails() {
   }, []);
 
   if (!companyDetails) {
-    return <p>Loading &hellip;</p>;
+    return <p className="loading">Loading &hellip;</p>;
   }
 
   return (
@@ -28,7 +28,7 @@ function CompanyDetails() {
       <h6 className="left">{companyDetails.description}</h6>
       {companyDetails.jobs.map(job => (
         <JobCard
-          key={job.id}
+          id={job.id}
           handle={job.companyHandle}
           title={job.title}
           salary={job.salary}

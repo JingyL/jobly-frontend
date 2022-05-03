@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Profile.css";
+import UserContext from "../hooks/UserContext";
+import { Redirect } from "react-router-dom";
 
+function Profile({changeProfile}) {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [formData, setFormData] = useState({
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
+    password: "",
+    email:currentUser.email
+  });
 
-
-function Profile() {
   function handleChange(e) {
     e.persist();
     console.log(e.target.value)
+    setFormData(f => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log()
-
+    let res = await changeProfile(currentUser.username, formData);
+    if (res["success"]){
+      setSuccessMsg(res["success"]);
+    }else{
+      setSuccessMsg(res["error"]);
+    }
   }
+
 
   return (
     <div className="profile">
@@ -25,14 +41,14 @@ function Profile() {
             <form>
               <div className="form-group left">
                 <label>Username</label>
-                <p className="form-control-plaintext">XXXX</p>
+                <p className="form-control-plaintext">{currentUser.username}</p>
               </div>
               <div className="form-group left left">
                 <label>First Name</label>
                 <input
                   name="firstName"
                   className="form-control left"
-                  value=""
+                  value={currentUser.firstName}
                   onChange={handleChange}
                 />
               </div>
@@ -41,7 +57,7 @@ function Profile() {
                 <input
                   name="lastName"
                   className="form-control left"
-                  value=""
+                  value={currentUser.lastName}
                   onChange={handleChange}
                 />
               </div>
@@ -50,7 +66,7 @@ function Profile() {
                 <input
                   name="email"
                   className="form-control left"
-                  value=""
+                  value={currentUser.email}
                   onChange={handleChange}
                 />
               </div>
@@ -60,14 +76,16 @@ function Profile() {
                   type="password"
                   name="password"
                   className="form-control left"
-                  value=""
+                  value={currentUser.password}
                   onChange={handleChange}
                 />
               </div>
-
+              {setSuccessMsg
+              ? <p>{successMsg}</p>
+              : <p>{errorMsg}</p>}
 
               <button
-                className="btn btn-primary btn-block mt-4"
+                className="btn btn-style btn-block mt-4"
                 onClick={handleSubmit}
               >
                 Save Changes

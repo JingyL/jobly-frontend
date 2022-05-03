@@ -1,11 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useContext } from "react";
+import { Link, Redirect } from "react-router-dom";
 import "./CompanyCard.css";
-
+import UserContext from "../hooks/UserContext";
 
 function CompanyCard({ name, description, logoUrl, handle }) {
-
 
   return (
     <div className="container">
