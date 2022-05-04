@@ -35,11 +35,11 @@ function SignUp({signup}) {
     <div className="profile">
 
       <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-        <h3 className="left">SignUp</h3>
-        <div className="card">
+        <h3 className="left page-name">SignUp</h3>
+        <div className="card signup-card">
           <div className="card-body">
             <form>
-              <div className="form-group left">
+              <div className="form-group left signup-label-font">
                 <label>Username</label>
                 <input
                   name="username"
@@ -48,7 +48,7 @@ function SignUp({signup}) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group left left">
+              <div className="form-group left left signup-label-font">
                 <label>First Name</label>
                 <input
                   name="firstName"
@@ -57,7 +57,7 @@ function SignUp({signup}) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group left">
+              <div className="form-group left signup-label-font">
                 <label>Last Name</label>
                 <input
                   name="lastName"
@@ -66,7 +66,7 @@ function SignUp({signup}) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group left">
+              <div className="form-group left signup-label-font">
                 <label>Email</label>
                 <input
                   name="email"
@@ -75,7 +75,7 @@ function SignUp({signup}) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group left">
+              <div className="form-group left signup-label-font">
                 <label>Password:</label>
                 <input
                   type="password"
@@ -87,7 +87,7 @@ function SignUp({signup}) {
               </div>
 
               {formErrors != ""
-                ? <p type="danger" messages={formErrors}>{formErrors}</p>
+                ? <p className="danger" messages={formErrors}>{formErrors}</p>
                 : null}
                 
               <button

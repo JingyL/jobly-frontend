@@ -37,11 +37,11 @@ function SignIn({login}) {
     <div className="siginin">
 
       <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-        <h3 className="left">Sign In</h3>
-        <div className="card">
+        <h3 className="left page-name">Sign In</h3>
+        <div className="card signin-card">
           <div className="card-body">
             <form>
-              <div className="form-group left">
+              <div className="form-group left signin-label-font">
                 <label>Username</label>
                 <input
                   name="username"
@@ -51,7 +51,7 @@ function SignIn({login}) {
                   required
                 />
               </div>
-              <div className="form-group left left">
+              <div className="form-group left left signin-label-font">
                 <label>Password</label>
                 <input
                   name="password"
@@ -63,7 +63,7 @@ function SignIn({login}) {
               </div>
 
               {formErrors != ""
-                ? <p type="danger" messages={formErrors}>{formErrors}</p>
+                ? <p className="danger" messages={formErrors}>{formErrors}</p>
                 : null}
 
               <button

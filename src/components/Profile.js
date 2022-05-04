@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Profile.css";
 import UserContext from "../hooks/UserContext";
-import { Redirect } from "react-router-dom";
 
 function Profile({changeProfile}) {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -35,15 +34,15 @@ function Profile({changeProfile}) {
     <div className="profile">
 
       <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-        <h3 className="left">Profile</h3>
-        <div className="card">
+        <h3 className="left page-name">Profile</h3>
+        <div className="card profile-card">
           <div className="card-body">
             <form>
-              <div className="form-group left">
+              <div className="form-group left profile-label-font">
                 <label>Username</label>
                 <p className="form-control-plaintext">{currentUser.username}</p>
               </div>
-              <div className="form-group left left">
+              <div className="form-group left left profile-label-font">
                 <label>First Name</label>
                 <input
                   name="firstName"
@@ -52,7 +51,7 @@ function Profile({changeProfile}) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group left">
+              <div className="form-group left profile-label-font">
                 <label>Last Name</label>
                 <input
                   name="lastName"
@@ -61,7 +60,7 @@ function Profile({changeProfile}) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group left">
+              <div className="form-group left profile-label-font">
                 <label>Email</label>
                 <input
                   name="email"
@@ -70,7 +69,7 @@ function Profile({changeProfile}) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group left">
+              <div className="form-group left profile-label-font">
                 <label>Confirm password to make changes:</label>
                 <input
                   type="password"

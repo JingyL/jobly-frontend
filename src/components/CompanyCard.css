@@ -2,8 +2,10 @@
     max-height: 250px;
     margin-bottom: 1rem;
     color: inherit;
+    background-color: #EDE0D4;
     border-radius: 0;
     border: none;
+    border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   }
   
@@ -14,7 +16,6 @@
   .CompanyCard:hover { 
     text-decoration: none;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    color:blue;
   }
 
   h6{
@@ -27,4 +28,16 @@
 
   img.float-right.ml-5{
     float: right;
+  }
+
+  .company-name{
+    color:#7F4F24;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .company-description{
+    color:#414833;
+  font-family: 'Libre Baskerville', serif;
   }

@@ -4,13 +4,40 @@
 
 
 .applyButton{
-    border-color: blue;
+    border-color: #656D4A;
     color: #fff;
-    box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
+    box-shadow: 0 0 40px 40px #656D4A inset, 0 0 0 0 #656D4A;
     transition: all 150ms ease-in-out;
+    font-size: 20px;
     
 }
 
 .applyButton:hover {
-  box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+  border-color: white;
+}
+
+.applied{
+  border-color: #7F4F24;
+  box-shadow: 0 0 40px 40px #7F4F24 inset, 0 0 0 0 #7F4F24;
+  color: #fff;
+  font-size: 20px;
+}
+
+.card-title{
+  color:#7F4F24;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.card-company-name{
+  color:#7F4F24;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
+}
+
+.job-des{
+  color:#9F7913;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
 }

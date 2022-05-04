@@ -30,17 +30,17 @@ function JobCard({ id, handle, title, salary, equity, name, applyToJob }) {
           <h6 className="card-title">
             {title}
           </h6>
-          <h6 className="description-right">
+          <h6 className="description-right card-company-name">
             {name}
           </h6>
-          <p className="description-left"><small>salary: {salary}</small></p>
-          <p className="description-left"><small>equity: {equity}</small></p>
+          <p className="description-left job-des"><small>salary: {salary}</small></p>
+          <p className="description-left job-des"><small>equity: {equity}</small></p>
           {successMsg
-            ? <p>{successMsg}</p>       
-            : <p>{errorMsg}</p>}
+            ? <p className="success">{successMsg}</p>       
+            : <p className="danger">{errorMsg}</p>}
 
           {jobApplied.includes(id) || successMsg
-          ?<button className="right applyButton">Applied</button>
+          ?<button className="right applied">Applied</button>
           : <button className="right applyButton" onClick={handleSubmit}>Apply</button>}
           
         </div>
