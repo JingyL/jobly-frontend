@@ -26,7 +26,7 @@ function SignUp({signup}) {
     let response = await signup(formData);
     console.log(response);
     if (response["success"]){
-      history.push("companies");
+      history.push("/");
     }else{
       setFormErrors(response.error);
     }

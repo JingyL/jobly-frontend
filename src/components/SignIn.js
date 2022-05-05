@@ -25,7 +25,7 @@ function SignIn({login}) {
       let response = await login(formData);
       console.log("login", response)
       if (response["success"]){
-        history.push("/companies");
+        history.push("/");
       }else{
         setFormErrors(response.error);
       }
