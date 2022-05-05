@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import { Navbar, Nav, NavItem } from "reactstrap";
+import { Navbar, Nav} from "reactstrap";
 import UserContext from "../hooks/UserContext";
 
+
+// nav bar
 function NavBar({ logout }) {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   console.log(currentUser)

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
 import UserContext from "../hooks/UserContext";
 import "./JobCard.css";
 
@@ -10,6 +9,7 @@ function JobCard({ id, handle, title, salary, equity, name, applyToJob }) {
   const { jobApplied, setJobApplied } = useContext(UserContext);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+
   async function handleSubmit(e) {
     e.preventDefault();
     let response = await applyToJob(currentUser.username, id);
@@ -19,10 +19,7 @@ function JobCard({ id, handle, title, salary, equity, name, applyToJob }) {
       setErrorMsg(response.error);
     }
   }
-  if (!currentUser){
-    return <Redirect to="/" />
-  }
-
+  console.log(jobApplied)
   return (
     <div className="container">
       <div className="CompanyCard card">

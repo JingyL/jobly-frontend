@@ -3,6 +3,7 @@ import "./SignUp.css";
 import JoblyApi from "../api/Api";
 import { useHistory} from "react-router-dom";
 
+// sign up form
 function SignUp({signup}) {
   const [formData, setFormData] = useState({
     username: "",

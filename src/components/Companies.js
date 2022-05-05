@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
 import "./Companies.css";
 import JoblyApi from "../api/Api";
 import CompanyCard from "./CompanyCard";
@@ -7,6 +6,7 @@ import SearchForm from "../common/SearchForm";
 
 function Companies() {
   const [companies, setCompanies] = useState(null);
+
   useEffect(() => {
     async function getCompanies() {
       let companies = await JoblyApi.getCompanies();
@@ -23,10 +23,6 @@ function Companies() {
   if (!companies) {
     return <p className="loading">Loading &hellip;</p>;
   }
-
-
-
-  
 
   return (
     <div className="companies">

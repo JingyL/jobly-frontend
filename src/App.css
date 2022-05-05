@@ -3,7 +3,7 @@
 .App {
   text-align: center;
   background-color:#e6ccb2;
-  height: 100%;
+  min-height: 100vh;
 }
 
 

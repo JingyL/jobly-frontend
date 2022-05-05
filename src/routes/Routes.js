@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import {Redirect, Route, Switch } from "react-router-dom";
 import Homepage from '../components/Homepage';
 import Companies from '../components/Companies';
 import Jobs from '../components/Jobs';
@@ -19,7 +19,7 @@ function Routes({ login, signup,changeProfile, applyToJob }) {
           <Companies></Companies>
         </PrivateRoute>
         <PrivateRoute exact path="/companies/:handle">
-          <CompanyDetails></CompanyDetails>
+          <CompanyDetails applyToJob={applyToJob}></CompanyDetails>
         </PrivateRoute>
         <PrivateRoute exact path="/jobs">
           <Jobs applyToJob={applyToJob}></Jobs>

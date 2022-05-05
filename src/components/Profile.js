@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Profile.css";
 import UserContext from "../hooks/UserContext";
 
+// Profile Page which user can change their password and other info
 function Profile({changeProfile}) {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [successMsg, setSuccessMsg] = useState("");

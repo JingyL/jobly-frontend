@@ -1,11 +1,9 @@
 import React, {useEffect, useState } from "react";
-import "./Jobs.css";
 import JoblyApi from "../api/Api";
-import UserContext from "../hooks/UserContext";
 import SearchForm from "../common/SearchForm";
 import JobCard from "./JobCard";
 
-
+// Load all Jobs
 function Jobs({applyToJob}) {
   const [jobs, setJobs] = useState(null);
 
@@ -25,9 +23,6 @@ function Jobs({applyToJob}) {
   if (!jobs) {
     return <p className="loading">Loading &hellip;</p>;
   }
-
-
-
 
   return (
     <div className="jobs">

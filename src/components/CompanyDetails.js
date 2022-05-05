@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import JoblyApi from "../api/Api";
-import "./CompanyDetails.css";
 import JobCard from "./JobCard";
 
 
 
-function CompanyDetails() {
+function CompanyDetails({applyToJob}) {
   const { handle } = useParams();
-  console.log(handle)
   const [companyDetails, setCompanyDetails] = useState(null);
   useEffect(() => {
     async function getCompany() {
@@ -16,7 +14,7 @@ function CompanyDetails() {
       setCompanyDetails(companyJobs);
     }
     getCompany();
-  }, []);
+  }, [handle]);
 
   if (!companyDetails) {
     return <p className="loading">Loading &hellip;</p>;
@@ -24,8 +22,8 @@ function CompanyDetails() {
 
   return (
     <div className="container">
-      <h4 className="left">{companyDetails.name}</h4>
-      <h6 className="left">{companyDetails.description}</h6>
+      <h4 className="left page-name">{companyDetails.name}</h4>
+      <h6 className="left page-name">{companyDetails.description}</h6>
       {companyDetails.jobs.map(job => (
         <JobCard
           id={job.id}
@@ -34,6 +32,7 @@ function CompanyDetails() {
           salary={job.salary}
           equity={job.equity}
           name={job.companyName}
+          applyToJob={applyToJob}
         />
       ))}
 

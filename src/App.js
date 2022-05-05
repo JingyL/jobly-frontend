@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
 import NavBar from './components/Navbar';
 import useLocalStorage from './hooks/useLocalStorage';
 import { useState } from 'react';
@@ -14,22 +14,25 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage("token");
   const [jobApplied, setJobApplied] = useState([]);
-
+  const [infoLoaded, setInfoLoaded] = useState(false);
+  
   useEffect(function loadUserInfo() {
     async function getCurrentUser() {
       if (token) {
         try {
-          console.log("xxx")
           let { username } = jwt_decode(token);
           JoblyApi.token = token;
           let currentUser = await JoblyApi.getCurrentUser(username);
           setCurrentUser(currentUser);
-          setJobApplied(currentUser.applications)
+          console.log(currentUser.applications)
+          setJobApplied(currentUser.applications);
         } catch (err) {
           setCurrentUser(null);
-        }
+        }      
       }
+      setInfoLoaded(true);
     }  
+    setInfoLoaded(false);
     getCurrentUser();
   }, [token]);
 
@@ -71,13 +74,15 @@ function App() {
 
   async function applyToJob(username, jobId){
     try{
-      let id = await JoblyApi.applyToJob(username, jobId);
-      setJobApplied(f => ([...f, id]));
+      let res = await JoblyApi.applyToJob(username, jobId);
+      setJobApplied(f => ([...f, res.applied]));
       return {"success":"Applied Successfuly!"};
     }catch(errors){
       return {"error": errors};
     }
   }
+
+  if (!infoLoaded) return <p>Loading</p>;
 
   return (
     <div className="App">

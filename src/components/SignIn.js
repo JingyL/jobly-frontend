@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./SignIn.css";
-import { Link, useHistory, useParams } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
-
+// Sign in form
 function SignIn({login}) {
   const [formData, setFormData] = useState({
     username: "",
